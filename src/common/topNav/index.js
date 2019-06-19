@@ -1,7 +1,10 @@
 import React from "react"
 import { Layout,Row,Col,Menu,Icon} from 'antd';
 import logo from "static/logo.png";
+import "./index.css"
 const {Header} = Layout;
+const {SubMenu} = Menu
+
 export default class TopNav extends React.Component{
     render(){
         return (
@@ -25,11 +28,18 @@ export default class TopNav extends React.Component{
                         </Menu>
                     </Col>
                     <Col span={2}>
-                        <Menu
-                            mode="inline"
-                            className="userInfo"
-                        >
-                            <Menu.Item key="setting:1">退出登陆</Menu.Item>
+                        <Menu  mode="horizontal" className="adminInfo">
+                            <SubMenu
+                                title={
+                                    <span className="submenu-title-wrapper">
+                                        <Icon type="setting" />
+                                        admin
+                                    </span>
+                                }
+                            >
+                                <Menu.Item key="setting:2">退出登陆</Menu.Item>
+                            </SubMenu>
+
                         </Menu>
                     </Col>
                 </Row>

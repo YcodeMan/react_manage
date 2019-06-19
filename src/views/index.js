@@ -1,7 +1,7 @@
 // import Home from "./home";
 // import Login from "./login";
 // import NotFound from "./NotFound";
-// import Settings from "./settings";
+// import Settings from "./bmanagement";
 // import Users from "./users"
 import Loadable from 'react-loadable';
 import Loading from "common/loading"
@@ -21,8 +21,8 @@ const NotFound = Loadable({
     loading: Loading,
 });
 
-const Settings = Loadable({
-    loader: () => import('./settings'),
+const Bmanagement = Loadable({
+    loader: () => import('./bmanagement'),
     loading: Loading,
 });
 
@@ -36,6 +36,6 @@ export {
     Home,
     Login,
     NotFound,
-    Settings,
+    Bmanagement,
     Users
 }

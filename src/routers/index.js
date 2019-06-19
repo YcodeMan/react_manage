@@ -3,7 +3,7 @@ import {
     Home,
     Login,
     NotFound,
-    Settings,
+    Bmanagement,
     Users
 } from "views"
 
@@ -28,18 +28,18 @@ export const pageRoute = [
         icon:"home"
     },
     {
-        pathname:"/admin/settings",
-        component:Settings,
-        title:"班级管理",
+        pathname:"/admin/bmanagement",
+        component:Bmanagement,
+        title:"商家管理",
         icon:"copy",
         children:[
             {
-                title:"查看班级",
-                pathname:"/admin/settings1"
+                title:"商家列表",
+                pathname:"/admin/bmanagement"
             },
 
             {
-                title:"测评管理",
+                title:"商家店铺",
                 pathname:"/admin/settings2"
             }
         ]
