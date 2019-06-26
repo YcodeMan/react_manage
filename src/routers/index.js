@@ -1,64 +1,36 @@
-//路由的配置文件
-import {
-    Home,
-    Login,
-    NotFound,
-    Bmanagement,
-    Users
-} from "views"
+import React,{Component} from 'react'
+import RouterConfig from './config'
+import {BrowserRouter as Router,Switch, Route,Redirect} from 'react-router-dom'
 
-//基础路由
-export const mainRoute = [
-    {
-        pathname:"/login",
-        component:Login
-    },
-    {
-        pathname:"/404",
-        component:NotFound
+
+
+
+export default class RouterSetting extends Component{
+    render() {
+        return(
+            <Router>
+                <Switch>
+                
+                   {
+                       RouterConfig.map((item) =>  {
+                          const route = r => {
+                            return(
+                                <Route
+                                key={r.pathname}
+                                path={r.pathname}
+                                component={r.component}
+                                />
+                            )
+                          }
+                          return item.component ?  route(item) : item.children.map(r => route(r)) 
+                       })
+                   }
+                    <Redirect  from="/" to="/login" exact />
+                    <Redirect from="**" to="/error"/>
+                </Switch>
+              
+            </Router>
+        )
     }
-]
+}
 
-//页面级别的路由
-export const pageRoute = [
-    {
-        pathname:"/admin/home",
-        component:Home,
-        title:"首页",
-        icon:"home"
-    },
-    {
-        pathname:"/admin/bmanagement",
-        component:Bmanagement,
-        title:"商家管理",
-        icon:"copy",
-        children:[
-            {
-                title:"商家列表",
-                pathname:"/admin/bmanagement"
-            },
-
-            {
-                title:"商家店铺",
-                pathname:"/admin/settings2"
-            }
-        ]
-    },
-    {
-        pathname:"/admin/users",
-        component:Users,
-        title:"用户管理",
-        icon:"user",
-        children:[
-            {
-                title:"用户列表",
-                pathname:"/admin/users1"
-            },
-
-            {
-                title:"用户权限",
-                pathname:"/admin/users2"
-            }
-        ]
-    }
-]
